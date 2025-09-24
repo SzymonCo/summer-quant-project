@@ -1,2 +1,12 @@
-# summer-quant-project
-My quant strategy project
+# First strategy test
+This summer i have learned basic python programming language and got to know the most popular libraries such as Pandas or Numpy. In this program I have used the backtesting library to test out the Simple Moving Average Crossover strategy on any asset in the yFinance database. It's my first strategy testing program, but i plan on doing more advanced ones in the future.
+
+I'll start with explaining the math and meaning behind the strategy. The Simple Moving Average indicator (in short SMA) is a rolling mean of the stock prices from a certain period of time. This tool can be used to assess the trend of the price of an asset. The strategy uses long and short term trends to find entry and exit points. For the long term trend we use a period of 200 days, while the short term trend is based on 50 days. We can plot these indicators alongside the asset price chart. If the short term graph is above the long term one We know the overal short trend of the stock has been up. Once both graphs crossover we know we should consider closing our position because the short term trend slowed down and is probably in a downtrend or a consolidation phase. Once the short term graph crosses the long term one from underneath that means that we are in an uptrend and we should probably buy.
+
+Even though the startegy is simple and well known, the program allowed me to get interesting results. First I defined all the data we need to test out our strategy and defined the SMA function with price data and period as variables. Then in order to use the backtesting library i classed our SMAcrossover as a strategy and defined short and long term SMAs, and when to enter and exit our positions.
+Using backtesting library i tested out our strategy using the Backtest command. It takes in account the starting capital(10000$), commmission(0.002), exclusive orders(one order at a time) and that we close our position at the end of the period no matter what the P/L is. Then i converted the strategy data into a pandas series and prinetd out the final result.
+
+After that i made the program more suitable for other experiments and decided to let the user choose the asset he wants to test the strategy on. The interval and period of the data we use is set but it's quite easy to change it manually in the code. 
+
+So basically we input the ticker of the asset we want to test and the output is a table of all the different data we need to further analyse the results such as: exposure time, final equity, peak equity, comissions, return, sharpe ratio, amount of trades, alpha and beta and so on. We also get our winrate, best and worse trades avg trade durations. We also get a neat visualization of our equity in time, P/L, entry and exit points and more important data.
+
